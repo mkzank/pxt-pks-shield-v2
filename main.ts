@@ -258,42 +258,42 @@ namespace pksdriver {
          LightOff(index)  
     }
 
-    export enum compoundEyeData {
+    export enum CompoundEyeData {
         //% block="eye_1"
-        ir_1,
+        Ir_1,
         //% block="eye_2"
-        ir_2,
+        Ir_2,
         //% block="eye_3"
-        ir_3,
+        Ir_3,
         //% block="eye_4"
-        ir_4,
+        Ir_4,
         //% block="eye_5"
-        ir_5,
+        Ir_5,
         //% block="eye_6"
-        ir_6,
+        Ir_6,
         //% block="eye_7"
-        ir_7,
+        Ir_7,
         //% block="eye_8"
-        ir_8,
+        Ir_8,
         //% block="eye_9"
-        ir_9,
+        Ir_9,
         //% block="eye_10"
-        ir_10,
+        Ir_10,
         //% block="eye_11"
-        ir_11,
+        Ir_11,
         //% block="eye_12"
-        ir_12,
+        Ir_12,
         //% block="max_eye_value"
         //% weight=99
-        max_eye_value,
+        Max_eye_value,
         //% block="max_eye"
         //% weight=100
-        max_eye,
+        Max_eye,
         //% block="angle"
         //% weight=98
-        angle,
+        Angle,
         //% block="mode"
-        mode,
+        Mode,
     }
 
     /**
@@ -452,12 +452,12 @@ enum DHTtype {
     DHT22,
 }
 
-enum dataType {
-    humidity,
-    temperature,
+enum DataType {
+    Humidity,
+    Temperature,
 }
 
-enum tempType {
+enum TempType {
     Celsius,
     Fahrenheit,
 }
@@ -646,14 +646,14 @@ namespace pksdriver {
     /**
      * convert a Hex data to Dec
      */
-    function HexToDec(dat: number): number {
+    function hexToDec(dat: number): number {
         return (dat >> 4) * 10 + (dat % 16);
     }
 
     /**
      * convert a Dec data to Hex
      */
-    function DecToHex(dat: number): number {
+    function decToHex(dat: number): number {
         return Math.idiv(dat, 10) * 16 + (dat % 10)
     }
 
@@ -986,39 +986,39 @@ namespace pksdriver {
     }
 }
 
-enum axisXYZ {
+enum AxisXYZ {
     //% block="X"
-    x,
+    X,
     //% block="Y"
-    y,
+    Y,
     //% block="Z"
-    z
+    Z
 }
 
-enum accelSen {
+enum AccelSen {
     // accelerometer sensitivity
 
     //% block="2g"
-    range_2_g,
+    Range_2_g,
     //% block="4g"
-    range_4_g,
+    Range_4_g,
     //% block="8g"
-    range_8_g,
+    Range_8_g,
     //% block="16g"
-    range_16_g
+    Range_16_g
 }
 
-enum gyroSen {
+enum GyroSen {
     // gyroscope sensitivite
 
     //% block="250dps"
-    range_250_dps,
+    Range_250_dps,
     //% block="500dps"
-    range_500_dps,
+    Range_500_dps,
     //% block="1000dps"
-    range_1000_dps,
+    Range_1000_dps,
     //% block="2000dps"
-    range_2000_dps
+    Range_2000_dps
 }
 
 //% weight=60
@@ -1228,7 +1228,7 @@ namespace pksdriver {
     //% block="get_dist (Unit: mm)" subcategory="Maze Car"
     //% group="Ultrasound"
     //% weight=70
-    export function ultra_result(): number {
+    export function ultraResult(): number {
         let dist = 0;
         pins.i2cWriteNumber(0x57,0x01, NumberFormat.UInt8BE, false);
         basic.pause(100);
@@ -1244,7 +1244,7 @@ namespace pksdriver {
     //% block="get_yaw (Unit: deg)" subcategory="Soccer Robot"
     //% group="Compass"
     //% weight=70
-    export function compass_get_yaw(): number {
+    export function compassGetYaw(): number {
         let yaw_ang = 0;
         pins.i2cWriteNumber(Compass.BOARD_ID, Compass.GET_YAW, NumberFormat.UInt8BE, false);
         let compass_raw = pins.i2cReadBuffer(Compass.BOARD_ID, 2, false);
@@ -1256,7 +1256,7 @@ namespace pksdriver {
 }
 
 // for maze car's use only
-enum direction { FRONT, BACK, LEFT, RIGHT }
+enum Direction { FRONT, BACK, LEFT, RIGHT }
 
 //% weight=60
 //% color=#1c4980 
@@ -1316,37 +1316,37 @@ namespace pksdriver {
     //Color Sensor
     export enum RGB {
         //% block="red_value"
-        r,
+        R,
         //% block="green_value"
-        g,
+        G,
         //% block="blue_value"
-        b
+        B
     }
 
     export enum RGBC {
         //% block="clear_light_value"
-        c,
+        C,
         //% block="red_light_value"
-        r,
+        R,
         //% block="green_light_value"
-        g,
+        G,
         //% block="blue_light_value"
-        b
+        B
     }
 
     export enum HSL {
         //% block="hue"
-        h,
+        H,
         //% block="saturation"
-        s,
+        S,
         //% block="lightness"
-        l
+        L
     }
 
-    export enum color_t {
-        black = 0, white, gray,
-        red, green, blue,
-        yellow, cyan, purple
+    export enum Color_t {
+        Black = 0, White, Gray,
+        Red, Green, Blue,
+        Yellow, Cyan, Purple
     }
 
     /**
@@ -1401,7 +1401,7 @@ namespace pksdriver {
     //% blockId=readcolor block="readColor" subcategory="Edu Kit"
     //% group="Colors"
     //% weight=70
-    export function readcolor(): color_t {
+    export function readColor(): color_t {
         pins.i2cWriteNumber(Color.ADDR, Color.COLOR, NumberFormat.UInt8BE, false);
         return pins.i2cReadBuffer(Color.ADDR, 1, false).getNumber(NumberFormat.UInt8LE, 0);
     }
@@ -1432,7 +1432,7 @@ namespace pksdriver {
     //% blockId=getcolor block="getColor" subcategory="Edu Kit"
     //% group="Colors"
     //% weight=70
-    export function getcolor(): number {
+    export function getColor(): number {
         pins.i2cWriteNumber(Color.ADDR, Color.HSL, NumberFormat.UInt8BE, false);
         let hsl = pins.i2cReadBuffer(Color.ADDR, 4, false);
         let temp1 = [hsl.getNumber(NumberFormat.UInt16LE, 0), //h
@@ -1470,7 +1470,7 @@ namespace pksdriver {
     //% blockId=getbutton block="get button $Buttoncheck" subcategory="Edu Kit"
     //% group="Button"
     //% weight=70
-    export function checkbutton(Buttoncheck: Button): boolean {
+    export function checkButton(Buttoncheck: Button): boolean {
         let buttonvalue = pins.analogReadPin(AnalogPin.P0);
         let button = 0;
         let x = 0;
@@ -1519,7 +1519,7 @@ namespace pksdriver {
 //% block="PKS Drivers"
 namespace pksdriver { 
 
-    export enum i2cchannel{
+    export enum I2cchannel{
         //% block="C1"
         C1,
         //% block="C2"
@@ -1603,4 +1603,4 @@ namespace pksdriver {
 
 
 
-
+a
